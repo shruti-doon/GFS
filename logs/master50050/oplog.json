@@ -1,0 +1,9 @@
+{"timestamp":"2025-05-05T19:30:35.114404912+05:30","sequence_num":1,"op_type":"CREATE_DIRECTORY","path":"/files"}
+{"timestamp":"2025-05-05T19:30:36.320940299+05:30","sequence_num":2,"op_type":"CREATE_FILE","path":"/files/file1.txt"}
+{"timestamp":"2025-05-05T19:30:37.592071799+05:30","sequence_num":3,"op_type":"CREATE_CHUNK","path":"/files/file1.txt","data":{"chunkId":"CHUNKID60cd54f9-16dc-48a6-aaa5-935313284ca0","chunkIndex":0}}
+{"timestamp":"2025-05-05T19:30:37.594483368+05:30","sequence_num":4,"op_type":"GRANT_LEASE","path":"","data":{"chunkId":"CHUNKID60cd54f9-16dc-48a6-aaa5-935313284ca0","leaseExpiry":1746453697,"primary":"50059"}}
+{"timestamp":"2025-05-05T19:30:37.594545203+05:30","sequence_num":5,"op_type":"UPDATE_CHUNK_VERSION","path":"","data":{"chunkId":"CHUNKID60cd54f9-16dc-48a6-aaa5-935313284ca0","newVersion":1}}
+{"timestamp":"2025-05-05T19:31:39.614055899+05:30","sequence_num":6,"op_type":"GRANT_LEASE","path":"","data":{"chunkId":"CHUNKID60cd54f9-16dc-48a6-aaa5-935313284ca0","leaseExpiry":1746453759,"primary":"50052"}}
+{"timestamp":"2025-05-05T19:31:39.614141713+05:30","sequence_num":7,"op_type":"UPDATE_CHUNK_VERSION","path":"","data":{"chunkId":"CHUNKID60cd54f9-16dc-48a6-aaa5-935313284ca0","newVersion":2}}
+{"timestamp":"2025-05-05T19:32:41.648728814+05:30","sequence_num":8,"op_type":"GRANT_LEASE","path":"","data":{"chunkId":"CHUNKID60cd54f9-16dc-48a6-aaa5-935313284ca0","leaseExpiry":1746453821,"primary":"50058"}}
+{"timestamp":"2025-05-05T19:32:41.648839815+05:30","sequence_num":9,"op_type":"UPDATE_CHUNK_VERSION","path":"","data":{"chunkId":"CHUNKID60cd54f9-16dc-48a6-aaa5-935313284ca0","newVersion":3}}

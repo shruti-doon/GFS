@@ -1,0 +1,153 @@
+syntax = "proto3";
+package chunkserverpb;
+option go_package = "github.com/laharisiri123/Distributed-Google-File-System-Project/protofiles/chunkserver";
+
+service ChunkserverService {
+     rpc AssignChunkRPC(AssignChunkReq) returns (AssignChunkRes);
+     rpc GrantLeaseRPC(GrantLeaseReq) returns (GrantLeaseRes);
+     rpc PushDataForWriteRPC(PushDataForWriteReq) returns (PushDataForWriteRes);
+     rpc CommitWriteRPC(CommitWriteReq) returns (CommitWriteRes);
+     rpc ForwardWriteRPC(ForwardWriteReq) returns (ForwardWriteRes);
+     rpc UpdateChunkVersionRPC(UpdateChunkVersionReq) returns (UpdateChunkVersionRes);
+     rpc GetChunkSizeRPC(GetChunkSizeReq) returns (GetChunkSizeRes);
+     rpc CommitAppendRPC(CommitAppendReq) returns (CommitAppendRes);
+     rpc ForwardAppendRPC(ForwardAppendReq) returns (ForwardAppendRes);
+     rpc ReadDataRPC(ReadDataReq) returns (ReadDataRes);
+     rpc CloneChunkRPC(CloneChunkReq) returns (CloneChunkRes);
+     rpc GetChunkInfoAndDataRPC(GetChunkInfoAndDataReq) returns (GetChunkInfoAndDataRes);
+     rpc ExitRPC(Empty) returns (Empty);
+     rpc DeleteChunkRPC(DeleteChunkReq) returns (DeleteChunkRes);
+ }
+
+message AssignChunkReq{
+     string chunkId = 1;
+     int64 version = 2;
+}
+
+message AssignChunkRes{
+     bool success = 1;
+}
+
+message GrantLeaseReq {
+     string chunkId = 1;
+     int64 version = 2;
+     repeated string secondaries = 3;
+     int64 leaseTime = 4;
+}
+
+message GrantLeaseRes {
+     bool success = 1;
+}
+
+message PushDataForWriteReq{
+     string chunkId = 1;
+     int64 offset = 2;
+     string data = 3;
+     string clientAddr = 4;
+     repeated string remainingReplicas = 5;
+     int64 chunkVersion = 6;
+}
+
+message PushDataForWriteRes{
+     bool success = 1;
+}
+
+message CommitWriteReq{
+     string chunkId = 1;
+     string clientAddress = 2;
+}
+
+message CommitWriteRes{
+     bool success = 1;
+}
+
+message ForwardWriteReq{
+     string chunkId = 1;
+     string clientAddress = 2;
+     int64 serialNumber = 3;
+}
+
+message ForwardWriteRes{
+     bool success = 1;
+}
+
+message UpdateChunkVersionReq{
+     string chunkId = 1;
+}
+
+message UpdateChunkVersionRes{
+     bool success = 1;
+}
+
+message GetChunkSizeReq {
+     string chunkId = 1;
+ }
+ 
+ message GetChunkSizeRes {
+     int64 size = 1;
+ }
+
+ message CommitAppendReq {
+     string chunkId = 1;
+     string clientAddress = 2;
+ }
+ 
+ message CommitAppendRes {
+     bool success = 1;
+     int64 offset = 2;  // The offset where the data was appended
+ }
+
+ message ForwardAppendReq {
+     string chunkId = 1;
+     string clientAddress = 2;
+     int64 serialNumber = 3; 
+ }
+ 
+ message ForwardAppendRes {
+     bool success = 1;
+ }
+
+ message ReadDataReq {
+     string chunkId = 1;
+     int64 offset = 2;      
+     int64 length = 3;      
+ }
+ 
+ message ReadDataRes {
+     string data = 1;
+     bool success = 2;
+ }
+
+message CloneChunkReq{
+     string chunkId = 1;
+     int64 version = 2;
+     string sourceServer = 3;
+}
+
+message CloneChunkRes{
+     bool success = 1;
+}
+
+message GetChunkInfoAndDataReq{
+     string chunkId = 1;
+}
+
+message GetChunkInfoAndDataRes{
+     int64 serialNumber = 1;
+     int64 nextSerialNumber = 2;
+     int64 lastAppendSerial = 3;
+     int64 version = 4;
+     string data = 5;
+}
+
+message Empty{
+
+}
+
+message DeleteChunkReq{
+     string chunkID = 1;
+}
+
+message DeleteChunkRes{
+     bool success = 1;
+}

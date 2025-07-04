@@ -1,0 +1,82 @@
+[
+  {
+    "command": "create_directory",
+    "directory_path": "/files"
+  },
+  {
+    "command": "sleep",
+    "duration": 1
+  },
+  {
+    "command": "create_file",
+    "file_name": "/files/file1.txt"
+  },
+  {
+    "command": "sleep",
+    "duration": 1
+  },
+  {
+    "command": "append",
+    "client_addr": "1",
+    "file_name": "/files/file1.txt",
+    "data_file_name": "data/appedata_client_1.txt"
+  },
+  {
+    "command": "append",
+    "client_addr": "2",
+    "file_name": "/files/file1.txt",
+    "data_file_name": "data/appedata_client_2.txt"
+  },
+  {
+    "command": "append",
+    "client_addr": "3",
+    "file_name": "/files/file1.txt",
+    "data_file_name": "data/appedata_client_3.txt"
+  },
+  {
+    "command": "append",
+    "client_addr": "4",
+    "file_name": "/files/file1.txt",
+    "data_file_name": "data/appedata_client_4.txt"
+  },
+  {
+    "command": "append",
+    "client_addr": "5",
+    "file_name": "/files/file1.txt",
+    "data_file_name": "data/appedata_client_5.txt"
+  },
+  {
+    "command": "append",
+    "client_addr": "6",
+    "file_name": "/files/file1.txt",
+    "data_file_name": "data/appedata_client_6.txt"
+  },
+  {
+    "command": "append",
+    "client_addr": "7",
+    "file_name": "/files/file1.txt",
+    "data_file_name": "data/appedata_client_7.txt"
+  },
+  {
+    "command": "append",
+    "client_addr": "8",
+    "file_name": "/files/file1.txt",
+    "data_file_name": "data/appedata_client_8.txt"
+  },
+  {
+    "command": "append",
+    "client_addr": "9",
+    "file_name": "/files/file1.txt",
+    "data_file_name": "data/appedata_client_9.txt"
+  },
+  {
+    "command": "append",
+    "client_addr": "10",
+    "file_name": "/files/file1.txt",
+    "data_file_name": "data/appedata_client_10.txt"
+  },
+  {
+    "command": "sleep",
+    "duration": 1
+  }
+]

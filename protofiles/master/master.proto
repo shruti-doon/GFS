@@ -1,0 +1,135 @@
+syntax = "proto3";
+package masterpb;
+option go_package = "github.com/laharisiri123/Distributed-Google-File-System-Project/protofiles/master";
+
+service MasterService {
+     rpc HeartbeatRPC(HeartbeatReq) returns (HeartbeatRes);
+     rpc CreateFileRPC(CreateFileReq) returns (CreateFileRes);
+     rpc CreateDirectoryRPC(CreateDirectoryReq) returns (CreateDirectoryRes);
+     rpc GetChunkDetailsForWriteRPC(WriteReq) returns (WriteRes);
+     rpc GetChunkDetailsForAppendRPC(AppendReq) returns (AppendRes);
+     rpc GetChunkDetailsForReadRPC(ReadReq) returns (ReadRes);
+     rpc DeleteFileRPC(DeleteFileReq) returns (DeleteFileRes);
+     rpc UndeleteFileRPC(UndeleteFileReq) returns (UndeleteFileRes);
+     rpc RegisterShadowMasterRPC(RegisterShadowMasterReq) returns (RegisterShadowMasterRes);
+     rpc ReplicateLogRPC(ReplicateLogReq) returns (ReplicateLogRes);
+     rpc NotifyMasterFailureRPC(NotifyMasterFailureReq) returns (NotifyMasterFailureRes);
+}
+
+message Chunk{
+     string chunkId = 1;
+     int64 version = 2;
+     bool hasError = 3;
+}
+
+message HeartbeatReq{
+     string address = 1;
+     repeated Chunk Chunks = 2;
+     uint64 diskSpace = 3;
+}
+
+message HeartbeatRes {
+     bool success = 1;
+}
+
+message CreateFileReq{
+     string filePath = 1;
+}
+
+message CreateFileRes{
+     bool success = 1;
+}
+
+message CreateDirectoryReq{
+     string directoryPath = 1;
+}
+
+message CreateDirectoryRes{
+     bool success = 1;
+}
+
+message WriteReq{
+     string filePath = 1;
+     int64 chunkIndex = 2;
+}
+
+message WriteRes{
+     string chunkId = 1;
+     int64 chunkVersion = 2;
+     string primaryAddress = 3;
+     repeated string replicas = 4;
+}
+
+message AppendReq {
+     string filePath = 1;
+}
+ 
+message AppendRes {
+     string chunkId = 1;
+     int64 chunkVersion = 2;
+     string primaryAddress = 3;
+     repeated string replicas = 4;
+     int64 chunkIndex = 5;
+}
+
+message ReadReq {
+     string filePath = 1;
+     int64 chunkIndex = 2;  
+ }
+ 
+ message ReadRes {
+     string chunkId = 1;
+     repeated string locations = 2;
+     int64 chunkIndex = 3;
+ }
+
+ message DeleteFileReq{
+     string filePath = 1;
+ }
+
+ message DeleteFileRes{
+     bool success = 1;
+ }
+
+ message UndeleteFileReq{
+     string filePath = 1;
+ }
+ 
+message UndeleteFileRes{
+     bool success = 1;
+}
+
+message RegisterShadowMasterReq {
+     string address = 1;
+ }
+ 
+ message RegisterShadowMasterRes {
+     bool success = 1;
+     int64 current_log_seq = 2;  // Current log sequence number on primary
+ }
+
+ message LogEntryProto {
+     int64 sequence_num = 1;
+     string op_type = 2;
+     string path = 3;
+     string data_json = 4;  // JSON serialized data
+     int64 timestamp = 5;
+ }
+ 
+ message ReplicateLogReq {
+     repeated LogEntryProto entries = 1;
+     bool is_checkpoint = 2;  // Indicates if this contains a full state checkpoint
+ }
+ 
+ message ReplicateLogRes {
+     bool success = 1;
+     int64 last_applied_seq = 2;  // Last sequence number successfully applied
+ }
+
+ message NotifyMasterFailureReq {
+     string failed_master_address = 1;
+ }
+ 
+ message NotifyMasterFailureRes {
+     bool acknowledged = 1;
+ }
