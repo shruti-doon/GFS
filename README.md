@@ -2,7 +2,7 @@
 
 A distributed file system implementation inspired by Google's GFS, built using Go, gRPC, and modern distributed systems technologies.
 
-## 🏗️ Architecture
+##  Architecture
 
 This project implements a distributed file system with the following components:
 
@@ -11,7 +11,7 @@ This project implements a distributed file system with the following components:
 - **Shadow Masters**: Backup masters for fault tolerance and automatic failover
 - **Client Interface**: RESTful-like interface for file operations
 
-## 🚀 Features
+##  Features
 
 - **Distributed Storage**: 64MB chunk-based storage with 3-way replication
 - **Fault Tolerance**: Automatic failover through shadow masters
@@ -20,7 +20,7 @@ This project implements a distributed file system with the following components:
 - **Directory Support**: Hierarchical directory structure management
 - **Monitoring**: System resource tracking and health monitoring
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - **Backend**: Go (Golang)
 - **Communication**: gRPC with Protocol Buffers
@@ -29,7 +29,7 @@ This project implements a distributed file system with the following components:
 - **Build System**: Makefile for automation
 - **Deployment**: Shell scripts for multi-server orchestration
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 gfs/
@@ -49,7 +49,7 @@ gfs/
 └── README.md          # This file
 ```
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 
@@ -90,7 +90,7 @@ gfs/
 - **Base Port**: Set `BASE_PORT` environment variable (default: 50050)
 - **Shadow Port**: Set `SHADOW_PORT` environment variable (default: 50070)
 
-## 🔧 API Operations
+##  API Operations
 
 The system supports the following file operations:
 
@@ -100,7 +100,7 @@ The system supports the following file operations:
 - **Append**: Append data to the end of files
 - **Delete/Undelete**: Soft delete with recovery capability
 
-## 🏛️ System Design
+## System Design
 
 ### Master Server
 - Manages file system metadata and namespace
@@ -120,7 +120,7 @@ The system supports the following file operations:
 - **Leader Election**: etcd-based coordination for master selection
 - **Health Monitoring**: Continuous monitoring of server status
 
-## 📊 Performance Characteristics
+##  Performance Characteristics
 
 - **Chunk Size**: 64MB for optimal performance
 - **Replication Factor**: 3 replicas per chunk
