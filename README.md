@@ -25,7 +25,6 @@ This project implements a distributed file system with the following components:
 - **Backend**: Go (Golang)
 - **Communication**: gRPC with Protocol Buffers
 - **Coordination**: etcd for leader election and service discovery
-- **Monitoring**: gopsutil for system resource tracking
 - **Build System**: Makefile for automation
 - **Deployment**: Shell scripts for multi-server orchestration
 
